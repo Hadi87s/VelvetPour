@@ -1,7 +1,11 @@
 # MOJITO – GSAP Learning Project
 
+![GSAP Mojito Website](./public/readme/hero.png)
+
+![GSAP Mojito Hero Section](./public/readme/Mojito-website.png)
+
 A cocktail-themed website built to explore **GSAP animations**.  
-Live demo: [gsap-mojito-project.vercel.app](https://gsap-mojito-project.vercel.app/)
+[Live Demo Here](https://gsap-mojito-project.vercel.app/)
 
 ---
 
