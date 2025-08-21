@@ -4,6 +4,9 @@ import { allCocktails } from '@/constants'
 import { useGSAP } from '@gsap/react'
 import React, { useRef, useState } from 'react'
 import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const Menu = () => {
   const contentRef = useRef<HTMLDivElement>(null)
