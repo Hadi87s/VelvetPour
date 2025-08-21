@@ -40,7 +40,6 @@ const Hero = () => {
       delay: 1
     })
 
-    // Parallax scrolling for leaves and arrow
     gsap
       .timeline({
         scrollTrigger: {
@@ -57,29 +56,47 @@ const Hero = () => {
     const startValue = isMobile ? 'top 50%' : 'center 60%'
     const endValue = isMobile ? '120% top' : 'bottom top'
 
+    const v = videoRef.current
+    if (!v) return
+
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: 'video',
+        trigger: v,
+        pin: true,
         start: startValue,
         end: endValue,
         scrub: true,
-        pin: true
+        anticipatePin: 1,
+        invalidateOnRefresh: true
       }
     })
 
-    if (videoRef.current) {
-      videoRef.current.onloadedmetadata = () => {
-        tl.to(videoRef.current, {
-          currentTime: videoRef.current?.duration
-        })
+    const addTween = () => {
+      tl.clear()
+      v.currentTime = 0
+      tl.to(v, { currentTime: v.duration || 0, ease: 'none' }, 0)
+      ScrollTrigger.refresh()
+    }
+
+    if (v.readyState >= 1 && v.duration > 0) {
+      addTween()
+    } else {
+      const onMeta = () => {
+        addTween()
+        v.removeEventListener('loadedmetadata', onMeta)
       }
+      v.addEventListener('loadedmetadata', onMeta)
+    }
+
+    return () => {
+      tl.kill()
     }
   }, [])
 
   return (
     <>
       <section id='hero' className='noisy'>
-        <h1 className='title'>Mojito</h1>
+        <h1 className='title'>MOJITO</h1>
         <img className='left-leaf' src='/images/hero-left-leaf.png' alt='left-leaf' />
         <img className='right-leaf' src='/images/hero-right-leaf.png' alt='right-leaf' />
 
