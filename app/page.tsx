@@ -3,13 +3,14 @@
 import React from 'react'
 import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
+import Cocktails from '@/components/Cocktails'
 
 const Home = () => {
   return (
-    <main className=''>
+    <main>
       <Navbar />
       <Hero />
-      <div className='h-screen bg-black'></div>
+      <Cocktails />
     </main>
   )
 }
