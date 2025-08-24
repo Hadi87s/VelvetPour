@@ -20,7 +20,7 @@ A cocktail-themed website built to explore **GSAP animations**.
 
 ## Installation
 ```bash
-git clone https://your-repo-url.git
+git clone https://github.com/Hadi87s/VelvetPour
 cd your-project-directory
 npm install
 npm run dev
